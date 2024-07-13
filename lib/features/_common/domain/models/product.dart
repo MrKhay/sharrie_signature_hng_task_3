@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
+import 'dart:math';
 import 'package:flutter/foundation.dart';
 import '../../constants/constants.dart';
 
@@ -9,6 +10,9 @@ import '../../constants/constants.dart';
 class Product {
   /// unique id
   final String id;
+
+  /// [Hero] tag
+  final String heroTag;
 
   /// name of product
   final String name;
@@ -24,10 +28,13 @@ class Product {
 
   /// price of product
   final double currentPrice;
+
+  ///
   const Product({
     required this.id,
     required this.name,
     required this.description,
+    required this.heroTag,
     this.categories,
     this.photos,
     required this.currentPrice,
@@ -36,6 +43,7 @@ class Product {
   Product copyWith({
     String? id,
     String? name,
+    String? heroTag,
     String? description,
     List<String>? categories,
     List<String>? photos,
@@ -44,6 +52,7 @@ class Product {
     return Product(
       id: id ?? this.id,
       name: name ?? this.name,
+      heroTag: heroTag ?? this.heroTag,
       description: description ?? this.description,
       categories: categories ?? this.categories,
       photos: photos ?? this.photos,
@@ -55,6 +64,7 @@ class Product {
     return <String, dynamic>{
       'id': id,
       'name': name,
+      'heroTag': heroTag,
       'description': description,
       'categories': categories,
       'photos': photos,
@@ -66,6 +76,7 @@ class Product {
     return Product(
       id: map['id'] as String,
       name: map['name'] as String,
+      heroTag: "${Random().nextInt(1000)} Tag",
       description: map['description'] as String,
       categories: (map['categories'] as List<dynamic>).isNotEmpty
           ? List<dynamic>.from(map['categories'] as List<dynamic>)

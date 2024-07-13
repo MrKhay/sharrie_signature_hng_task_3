@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'features/checkout/presentation/screens/checkout_screen.dart';
 import 'features/features.dart';
 
 ///
@@ -30,8 +29,14 @@ class _QuickCartState extends ConsumerState<SharrieSignature> {
 
   @override
   Widget build(BuildContext context) {
+    List screens = [
+      const HomeScreen(),
+      underConstruction(context),
+      underConstruction(context),
+      underConstruction(context),
+    ];
     return Scaffold(
-      body: _screens[_selectedIndex],
+      body: screens[_selectedIndex],
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           border: BorderDirectional(
@@ -72,11 +77,27 @@ class _QuickCartState extends ConsumerState<SharrieSignature> {
               ),
               NavigationDestination(
                 icon: Icon(
-                  Icons.shopping_cart_rounded,
+                  Icons.favorite,
                   color: context.colorScheme.outline,
                 ),
-                selectedIcon: const Icon(Icons.shopping_cart_rounded),
-                label: kCheckout,
+                selectedIcon: const Icon(Icons.favorite),
+                label: kWishlist,
+              ),
+              NavigationDestination(
+                icon: Icon(
+                  Icons.person_2_outlined,
+                  color: context.colorScheme.outline,
+                ),
+                selectedIcon: const Icon(Icons.person_2_outlined),
+                label: kProfile,
+              ),
+              NavigationDestination(
+                icon: Icon(
+                  Icons.search,
+                  color: context.colorScheme.outline,
+                ),
+                selectedIcon: const Icon(Icons.search),
+                label: kSearch,
               ),
             ],
           ),
@@ -86,7 +107,39 @@ class _QuickCartState extends ConsumerState<SharrieSignature> {
   }
 }
 
-const List<StatefulWidget> _screens = <StatefulWidget>[
-  HomeScreen(),
-  CheckoutScreen(),
-];
+Widget underConstruction(BuildContext context) {
+  return Container(
+    color: context.colorScheme.surface,
+    width: context.screenSize.width,
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        Icon(
+          Icons.construction,
+          color: context.colorScheme.primary,
+        ),
+        const SizedBox(height: kGap_1),
+        Text(
+          kUnderConstruction,
+          style: context.textTheme.titleLarge?.copyWith(
+            color: context.colorScheme.primary,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        const SizedBox(height: kGap_3),
+        OutlinedButton(
+            onPressed: () async {
+              /// navigate back home
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const SharrieSignature()),
+                (Route<dynamic> route) => false,
+              );
+            },
+            child: const Text(kGoHome))
+      ],
+    ),
+  );
+}

@@ -59,8 +59,13 @@ class OrderSuccessScreen extends StatelessWidget {
                   /// clear order
                   ref.read(ordersDataNotifierProvider.notifier).clearOrders();
 
-                  /// naviagte to order success screen
-                  navigator.pop();
+                  /// navigate back home
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SharrieSignature()),
+                    (Route<dynamic> route) => false,
+                  );
                 },
                 child: Text(
                   kContinueShopping,

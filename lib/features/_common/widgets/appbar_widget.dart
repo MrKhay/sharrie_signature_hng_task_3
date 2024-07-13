@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../features.dart';
@@ -27,6 +28,7 @@ PreferredSizeWidget appBar({
   Color? backgroundColor,
   double? elevation,
   double? scrolledUnderElevation,
+  SystemUiOverlayStyle? systemOverlayStyle,
   Widget? leading,
 }) {
   return AppBar(
@@ -34,6 +36,7 @@ PreferredSizeWidget appBar({
     elevation: elevation,
     scrolledUnderElevation: 0,
     backgroundColor: backgroundColor,
+    systemOverlayStyle: systemOverlayStyle,
     title: Text(
       title ?? '',
       style: style ??

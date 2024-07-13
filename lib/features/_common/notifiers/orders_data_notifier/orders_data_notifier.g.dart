@@ -7,7 +7,7 @@ part of 'orders_data_notifier.dart';
 // **************************************************************************
 
 String _$ordersDataNotifierHash() =>
-    r'05b78f1f5ebb011d662253ac107dcf52e38eb1b8';
+    r'9553c3c660507aa3b4bf1bc2ea3b67bfcbd2ff18';
 
 /// Manages [Product]
 ///

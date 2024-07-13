@@ -3,6 +3,13 @@ import '../../../features.dart';
 
 part 'products_data_notifier.g.dart';
 
+typedef ProductsDataType = ({
+  List<Product> deals,
+  List<Product> justForYou,
+  List<Product> youMightLike,
+  List<Product> recentlyViewed,
+});
+
 @Riverpod(keepAlive: true)
 
 /// Manages [Product]
@@ -10,8 +17,9 @@ class ProductsDataNotifier extends _$ProductsDataNotifier {
   late ProdcutsRepostiory _prodcutsRepostiory;
   late AuthRepository _authRepository;
   Session? session;
+
   @override
-  Future<List<Product>?> build() async {
+  Future<ProductsDataType?> build() async {
     _prodcutsRepostiory = const ProdcutsRepostiory();
     _authRepository = AuthRepository();
 
@@ -21,7 +29,7 @@ class ProductsDataNotifier extends _$ProductsDataNotifier {
 
   /// Retrives list of [Product]
   Future<void> getProducts() async {
-    state = const AsyncValue<List<Product>?>.loading();
+    state = const AsyncValue<ProductsDataType?>.loading();
 
     if (session == null) {
       // login
@@ -30,7 +38,7 @@ class ProductsDataNotifier extends _$ProductsDataNotifier {
 
       // when error
       if (authResponce.error != null) {
-        state = AsyncValue<List<Product>?>.error(
+        state = AsyncValue<ProductsDataType?>.error(
           authResponce.error ?? kSomethingWentWrong,
           StackTrace.current,
         );
@@ -45,12 +53,19 @@ class ProductsDataNotifier extends _$ProductsDataNotifier {
 
     // when error
     if (productsResponce.error != null) {
-      state = AsyncValue<List<Product>?>.error(
+      state = AsyncValue<ProductsDataType?>.error(
           productsResponce.error ?? kSomethingWentWrong, StackTrace.current);
       return;
     }
 
+    List<Product> products = productsResponce.value!;
+
     /// update state
-    state = AsyncValue<List<Product>?>.data(productsResponce.value);
+    state = AsyncValue<ProductsDataType?>.data((
+      deals: products,
+      justForYou: products.getJustForYouProducts(),
+      youMightLike: products.getYouMightLikeProducts(),
+      recentlyViewed: const [],
+    ));
   }
 }
