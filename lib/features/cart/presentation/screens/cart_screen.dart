@@ -84,6 +84,7 @@ class CartScreenState extends ConsumerState<CartScreen> {
               : Scrollbar(
                   child: ListView.separated(
                     shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
                     itemCount: orders.length,
                     itemBuilder: (BuildContext context, int index) {
                       final Order order = orders[index];
