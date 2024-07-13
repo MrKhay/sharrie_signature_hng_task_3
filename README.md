@@ -1,6 +1,6 @@
-# HNG Task 2
+# HNG Task 3
 
-## Simple Shopping App (Quick Cart)
+## Sharrie’s Signature
 
 ## Description
 
@@ -35,11 +35,12 @@ Conventional Commits is a specification for adding human and machine-readable me
 
 ## Objectives
 
-- Create a simple shopping app with a bottom navigation bar.
+- Create a pixel-perfect shopping app based on the Timbu Shop designs.
 - Products screen shows a list of products/items.
 - Checkout screen displays the products added for checkout.
 - Functionality to add and remove items from the checkout.
 - A button to navigate to an "Order Successful" screen from the checkout screen.
+- Proper UI state management and error handling.
 
 ## Acceptance Criteria
 
@@ -58,13 +59,17 @@ Conventional Commits is a specification for adding human and machine-readable me
 1. Clone the repository:
 
     ```sh
-    git clone https://github.com/MrKhay/quick_cart_hng_task_2.git
-    cd quick_cart
+    git clone https://github.com/MrKhay/sharrie_signature_hng_task_3.git
+    cd sharrie_signature_hng_task_3
     ```
 
 2. Open the project in your chosen development environment (e.g., Android Studio for Android, Xcode for iOS).
 
 3. Build and run the app on an emulator or physical device.
+
+## Figman Design Link
+
+View design [here](https://www.figma.com/design/clF99fTP4N8Brmt0PtPz5C/HNG-Internship-projects?node-id=19-3&t=aafjHDWLeTo6Ua7I-0).
 
 ## APK Download
 
