@@ -73,11 +73,11 @@ View design [here](https://www.figma.com/design/clF99fTP4N8Brmt0PtPz5C/HNG-Inter
 
 ## APK Download
 
-Download the APK file from [here](https://github.com/MrKhay/quick_cart_hng_task_2/releases/tag/v1.0.0/app-release.apk).
+Download the APK file from [here](https://github.com/MrKhay/sharrie_signature_hng_task_3/releases/tag/v1.0.1).
 
 ## Appetize.io Showcase
 
-Check out the virtualized demonstration of the app on [Appetize.io](https://appetize.io/app/b_rifmpmyuhzxbz4awsw3lxqu74y).
+Check out the virtualized demonstration of the app on [Appetize.io](https://appetize.io/app/b_4ktr6tmpx45sz45vausfolxdmm).
 
 ## Contact
 
